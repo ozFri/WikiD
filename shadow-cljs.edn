@@ -1,0 +1,24 @@
+{:deps   {:aliases [:dev]}
+ :nrepl  {:port 7002 :middleware [refactor-nrepl.middleware/wrap-refactor]}
+ :builds {:app        {:target     :browser
+                       :asset-path "js"
+                       :output-dir "resources/public/js"
+                       :modules    {:main {:entries  [wikid.core]
+                                           :anti-fn  wikid.core/init
+                                           :preloads [devtools.preload]}}
+                       :devtools   {
+                                    :http-port  8021
+                                    :http-root  "resources/public/"
+                                    :after-load wikid.core/re-render
+                                    :preloads   [shadow.remote.runtime.cljs.browser]}}
+          :workspaces {:target     :browser
+                       :ns-regexp  "-workspaces$"
+                       :output-dir "resources/public/js/workspaces"
+                       :asset-path "/js/workspaces"
+                       :devtools   {:preloads           [devtools.preload fulcro.inspect.preload]
+                                    :after-load         nubank.workspaces.core/after-load
+                                    :loader-mode        :eval
+                                    :http-root          "resources/public"
+                                    :http-port          3655
+                                    :http-resource-root "."}
+                       :modules    {:main {:entries [crystal-web-client.workspaces.main]}}}}}
