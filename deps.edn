@@ -11,6 +11,9 @@
         day8.re-frame/re-frame-10x {:mvn/version "0.7.0"}
         nubank/workspaces {:mvn/version "1.0.15"}
         re-frisk {:mvn/version "1.3.2"}
+        re-posh {:mvn/version "0.3.2"}
+        herb {:mvn/version "0.10.0"}
+        datascript {:mvn/version "1.0.0"}
         re-frisk-remote {:mvn/version "1.3.2"}
         reagent {:mvn/version "1.0.0-alpha2"}},
  :paths ["resources" "test/cljs" "src/clj" "src/cljs"]}
